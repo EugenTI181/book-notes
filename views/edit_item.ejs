@@ -1,0 +1,59 @@
+<%- include('partials/header.ejs'); -%> <!-- Include header partial -->
+
+<!-- Edit section -->
+<section class="py-4">
+  <span class="px-4">
+    <a href="/" class="custom-a"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAk0lEQVR4nO3ZsQ3CQBQE0Wnin6D/SogQyCQ4oBwspAsQDbD/NK+CW40D+wySOhjAA7jQfMQOvIEbTRXwnCNewImGHJHCEikskcISKSyRwhIpLJGifBUPUSuU+NjmiH1+rra1rTKkfh6tM42VY0KVZUKVZUKVZUJZJpVlUlkmlWVSLVVmfP2evtPcmHcA138fRFrVAcl0dB8tu9fZAAAAAElFTkSuQmCC">Back to list</a>
+  </span>
+  <div class="container px-4 px-lg-5 my-4">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+          <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" src="https://covers.openlibrary.org/b/isbn/<%= choosenItem.book_id %>-L.jpg" alt="bookimg"></div> <!-- Book image -->
+          <div class="col-md-7">
+          <form class="edit" action="/edit/:id" method="post"> <!-- Edit form -->
+            <input type="hidden" name="id" value="<%= choosenItem.id %>"> <!-- Hidden input for book ID -->
+            <label for="authorName" class="form-label"><b>Author:</b></label> <!-- Author label -->
+            <input type="author" class="form-control" id="authorName" name="authorName" value="<%= choosenItem.author %>"> <!-- Author input -->
+            <% if (errorMessageAuthor) { %> <!-- Error message for author -->
+              <p class="error"><%= errorMessageAuthor %></p>
+            <% } %>
+            </br><label for="bookTitle" class="form-label"><b>Title:</b></label> <!-- Title label -->
+            <input type="title" class="form-control" id="bookTitle" name="bookTitle" value="<%= choosenItem.title %>"> <!-- Title input -->
+            <% if (errorMessageTitle) { %> <!-- Error message for title -->
+              <p class="error"><%= errorMessageTitle %></p>
+            <% } %>
+            </br><label for="bookId" class="form-label"><b>Book ID:</b></label> <!-- Book ID label -->
+            <input type="bookId" class="form-control" id="bookId" name="bookId" value="<%= choosenItem.book_id %>"> <!-- Book ID input -->
+            <% if (errorMessageBookId) { %> <!-- Error message for Book ID -->
+              <p class="error"><%= errorMessageBookId %></p>
+            <% } %>
+            </br><label for="rating" class="form-label"><b>How strongly I recommend it:</b></label> <!-- Rating label -->
+            <select class="form-select" id="rating" name="rating"> <!-- Rating select -->
+                <% for (let i = 1; i <= 10; i++) { %>
+                    <% if (i === choosenItem.raiting) { %>
+                        <option value="<%= i %>" selected><%= i %></option>
+                    <% } else { %>
+                        <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                <% } %>
+            </select><br>
+            <label for="date" class="form-label"><b>Date read:</b></label> <!-- Date label -->
+            <% const date = new Date(choosenItem.date_read); <!-- Formatting date -->
+              const day = String(date.getDate()).padStart(2, '0');
+              const month = String(date.getMonth() + 1).padStart(2, '0');
+              const year = date.getFullYear();
+            %>
+            <input type="date" id="date" name="dateRead" value="<%= year %>-<%= month %>-<%= day %>"></br> <!-- Date input -->
+
+            <label for="review" class="form-label"><b>Review:</b></label> <!-- Review label -->
+            <textarea class="form-control" id="review" rows="7" name="reviewBook"><%= choosenItem.review %></textarea> <!-- Review textarea -->
+            <% if (errorMessageReview) { %> <!-- Error message for review -->
+              <p class="error"><%= errorMessageReview %></p>
+            <% } %>
+            </br><button  type="submit" class="custom-button my-0">Update</button> <!-- Submit button -->
+            <button type="button" class="custom-button-secondary my-0" onclick="redirectToPage('/')">Cancel</button> <!-- Cancel button -->
+          </form>
+        </div>
+  </div>
+</section> <!-- End of edit section -->
+
+<%- include('partials/footer.ejs'); -%> <!-- Include footer partial -->

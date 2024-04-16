@@ -1,0 +1,29 @@
+</main> <!-- Closing tag for main content section -->
+
+<footer class="text-body-secondary py-5 bg-blue"> <!-- Footer section -->
+  <div class="container"> <!-- Container for footer content -->
+    <p class="float-end mb-1">    
+      Copyright © 2024 Romanescu Eugeniu <!-- Copyright information -->
+    </p>
+  </div>
+</footer> <!-- Closing tag for footer section -->
+
+<!-- Bootstrap JavaScript -->
+<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!-- JavaScript function to redirect to a specific page -->
+<script>
+  function redirectToPage(url) {
+    window.location.href = url; 
+  }
+</script>
+<script>
+  function submitForm(reviewId) {
+      // Set the value of the hidden input with ID 'deleteReviewInput' to the received value
+      document.getElementById("deleteReviewInput").value = reviewId;
+      // Submit the form
+      document.getElementById("deleteReviewForm").submit();
+  }
+</script>
+</body>
+</html> <!-- Closing tag for HTML document -->

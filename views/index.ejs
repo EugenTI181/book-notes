@@ -1,0 +1,48 @@
+<%- include('partials/header.ejs'); -%> <!-- Include header partial -->
+
+  <!-- Hero section -->
+  <section class="py-5 text-center container custom-section" id="background-section">
+    <div class="row py-lg-5 content">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">ReadWise</h1> <!-- Main heading -->
+        <p class="lead text-body-secondary">Your Guide to Book Reviews.</p> <!-- Subheading -->
+        <p>
+          <a href="/add" class="custom-button custom-a my-2">Add review</a> <!-- Button to add review -->
+        </p>
+      </div>
+    </div>
+  </section> <!-- End of hero section -->
+
+  <!-- List of reviews section -->
+  <div class="album py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% for(let item of listItems) {%>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="450" src="https://covers.openlibrary.org/b/isbn/<%= item.book_id %>-M.jpg" alt="Thumbnail">
+            <div class="card-body">
+              <p class="card-text"><b><%= item.title %></b></p> <!-- Title of the book -->
+              <p class="card-text"><%= item.author %></p> <!-- Author of the book -->
+              <small class="text-body-secondary">
+                How strongly I recommend it: <%= item.raiting %>/10 <!-- Rating of the book -->
+              </small>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="redirectToPage('/review/<%= item.id %>')">View</button> <!-- Button to view review -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="redirectToPage('/edit/<%= item.id %>')">Edit</button> <!-- Button to edit review -->
+                </div>
+                <form id="deleteReviewForm" action="/delete" method="post"> <!-- Form to delete review -->
+                  <input type="hidden" name="deleteReview" id="deleteReviewInput" value="<%=  item.id%>"> <!-- Hidden input to store review ID -->
+                  <button type="button" class="btn btn-sm btn-outline-danger" onclick="submitForm('<%=  item.id%>')">Delete</button> <!-- Button to delete review -->
+                </form>              
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+<%- include('partials/footer.ejs'); -%> <!-- Include footer partial -->

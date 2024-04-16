@@ -1,0 +1,132 @@
+/* Styling for custom links */
+.custom-a {
+    text-decoration: none; /* Remove underline */
+    color: #212529; /* Set text color */
+}
+
+/* Styling for background color blue */
+.bg-blue {
+    background-color: #004d80; /* Set background color */
+}
+
+/* Styling for background section */
+#background-section {
+    background-image: url('../images/book_photo.jpg'); /* Set background image */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+}
+
+/* Responsive styling for container */
+@media (min-width: 1200px) {
+    .container.custom-section {
+        max-width: 100%; /* Set maximum width */
+        margin-left: auto; /* Auto left margin */
+        margin-right: auto; /* Auto right margin */
+    }
+}
+
+/* Styling for custom section */
+.custom-section {
+    position: relative; /* Set position relative */
+    overflow: hidden; /* Hide overflowing content */
+}
+
+/* Styling for overlay */
+.custom-section::before {
+    content: ''; /* Add content */
+    position: absolute; /* Set position absolute */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    width: 100%; /* Set width */
+    height: 100%; /* Set height */
+    background-color: #004d8057; /* Set background color with transparency */
+}
+
+/* Styling for content inside custom section */
+.custom-section .content {
+    position: relative; /* Set position relative */
+    z-index: 1; /* Set z-index above overlay */
+}
+
+/* Styling for primary custom button */
+.custom-button {
+    background-color: #ff7f50; /* Set background color */
+    color: #ffffff; /* Set text color */
+    padding: 10px 20px; /* Set padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Set border radius */
+    font-size: 16px; /* Set font size */
+    cursor: pointer; /* Set cursor */
+    transition: background-color 0.3s ease; /* Add transition */
+}
+
+/* Hover effect for primary custom button */
+.custom-button:hover {
+    background-color: #fb480d; /* Change background color on hover */
+}
+
+/* Styling for secondary custom button */
+.custom-button-secondary {
+    background-color: #6e6e6e; /* Set background color */
+    color: #ffffff; /* Set text color */
+    padding: 10px 20px; /* Set padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Set border radius */
+    font-size: 16px; /* Set font size */
+    cursor: pointer; /* Set cursor */
+    transition: background-color 0.3s ease; /* Add transition */
+}
+
+/* Hover effect for secondary custom button */
+.custom-button-secondary:hover {
+    background-color: #565656; /* Change background color on hover */
+}
+
+/* Styling for edit checkbox */
+input[type="checkbox"] {
+    margin: 20px; /* Set margin */
+    margin-left: 0; /* Reset left margin */
+}
+
+/* Styling for edit button */
+button.edit {
+    margin-left: 0px; /* Reset left margin */
+    margin-right: 20px; /* Set right margin */
+    border: none; /* Remove border */
+    background: none; /* Remove background */
+}
+
+/* Styling for icon */
+.icon {
+    height: 20px; /* Set height */
+}
+
+/* Styling for text input */
+input[type="text"] {
+    text-align: right; /* Align text to right */
+    height: 60px; /* Set height */
+    top: 10px; /* Set top position */
+    border: none; /* Remove border */
+    background: transparent; /* Set transparent background */
+    font-size: 20px; /* Set font size */
+    font-weight: 200; /* Set font weight */
+    width: 80%; /* Set width */
+}
+
+/* Focus styling for text input */
+input[type="text"]:focus {
+    outline: none; /* Remove outline */
+    box-shadow: inset 0 -3px 0 0 #a683e3; /* Add box shadow on focus */
+}
+
+/* Placeholder styling */
+::placeholder {
+    color: lightgray; /* Set placeholder color */
+    opacity: 1; /* Set opacity */
+}
+
+/* Styling for error messages */
+.error {
+    color: #fb480d; /* Set error text color */
+}

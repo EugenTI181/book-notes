@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs'); -%> <!-- Including the header partial -->
+
+<!-- Section for adding a new item -->
+<section class="py-4">
+  <span class="px-4">
+    <a href="/" class="custom-a"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAk0lEQVR4nO3ZsQ3CQBQE0Wnin6D/SogQyCQ4oBwspAsQDbD/NK+CW40D+wySOhjAA7jQfMQOvIEbTRXwnCNewImGHJHCEikskcISKSyRwhIpLJGifBUPUSuU+NjmiH1+rra1rTKkfh6tM42VY0KVZUKVZUKVZUJZJpVlUlkmlWVSLVVmfP2evtPcmHcA138fRFrVAcl0dB8tu9fZAAAAAElFTkSuQmCC">Back to list</a>
+  </span>
+  <div class="container px-4 px-lg-5 my-4">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+          <div class="col-md-7">
+          <form class="add" action="/add" method="post"> <!-- Form for adding a new item -->
+            <input type="hidden" name="id"> <!-- Hidden input for item ID -->
+            <label for="authorName" class="form-label"><b>Author:</b></label> <!-- Label for author -->
+            <input type="author" class="form-control" id="authorName" name="authorName" placeholder="Author"> <!-- Input for author -->
+            <% if (errorMessageAuthor) { %> <!-- Display error message for author -->
+              <p class="error"><%= errorMessageAuthor %></p>
+            <% } %>
+      
+            </br><label for="bookTitle" class="form-label"><b>Title:</b></label> <!-- Label for title -->
+            <input type="title" class="form-control" id="bookTitle" name="bookTitle" placeholder="Title"> <!-- Input for title -->
+            <% if (errorMessageTitle) { %> <!-- Display error message for title -->
+              <p class="error"><%= errorMessageTitle %></p>
+            <% } %>
+            </br><label for="bookId" class="form-label"><b>Book ID:</b></label> <!-- Label for book ID -->
+            <input type="bookId" class="form-control" id="bookId" name="bookId" placeholder="Book ID"> <!-- Input for book ID -->
+            <% if (errorMessageBookId) { %> <!-- Display error message for book ID -->
+              <p class="error"><%= errorMessageBookId %></p>
+            <% } %>
+            </br><label for="rating" class="form-label"><b>How strongly I recommend it:</b></label> <!-- Label for rating -->
+            <select class="form-select" id="rating" name="rating"> <!-- Select for rating -->
+                <% for (let i = 1; i <= 10; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select><br>
+            <label for="date" class="form-label"><b>Date read:</b></label> <!-- Label for date -->
+            <%const date = new Date(); <!-- Getting current date -->
+                    const day = date.getDate();
+                    const month = date.getMonth() + 1;
+                    const year = date.getFullYear();
+                    %>
+            <input type="date" id="date" name="dateRead"></br> <!-- Input for date -->
+            <label for="review" class="form-label"><b>Review:</b></label> <!-- Label for review -->
+            <textarea class="form-control" id="review" rows="7" name="reviewBook"></textarea> <!-- Textarea for review -->
+            <% if (errorMessageReview) { %> <!-- Display error message for review -->
+              <p class="error"><%= errorMessageReview %></p>
+            <% } %>
+            </br><button  type="submit" class="custom-button my-0">Add</button> <!-- Button to submit form -->
+            <button type="button" class="custom-button-secondary my-0" onclick="redirectToPage('/')">Cancel</button> <!-- Button to cancel -->
+          </form>
+        </div>
+  </div>
+</section> <!-- End of add section -->
+
+<%- include('partials/footer.ejs'); -%> <!-- Including the footer partial -->

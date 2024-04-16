@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs'); -%> <!-- Include header partial -->
+
+<!-- Back to list section -->
+<section class="py-4">
+  <span class="px-4">
+    <a href="/" class="custom-a"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAk0lEQVR4nO3ZsQ3CQBQE0Wnin6D/SogQyCQ4oBwspAsQDbD/NK+CW40D+wySOhjAA7jQfMQOvIEbTRXwnCNewImGHJHCEikskcISKSyRwhIpLJGifBUPUSuU+NjmiH1+rra1rTKkfh6tM42VY0KVZUKVZUKVZUJZJpVlUlkmlWVSLVVmfP2evtPcmHcA138fRFrVAcl0dB8tu9fZAAAAAElFTkSuQmCC">Back to list</a> <!-- Link to go back to list -->
+  </span>
+  <div class="container px-4 px-lg-5 my-4">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+          <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" src="https://covers.openlibrary.org/b/isbn/<%= choosenItem.book_id %>-L.jpg" alt="bookimg"></div> <!-- Book image -->
+          <div class="col-md-7">
+              <div class="small mb-1"><%= choosenItem.author %></div> <!-- Author of the book -->
+              <h1 class="display-5 fw-bolder"><%= choosenItem.title %></h1> <!-- Title of the book -->
+              <div class="fs-5 mb-5">
+                  <span>How strongly I recommend it: <%= choosenItem.raiting %>/10</span><br> <!-- Rating of the book -->
+                  <span>Date read: <%const date = new Date(choosenItem.date_read);
+                    const day = date.getDate();
+                    const month = date.getMonth() + 1;
+                    const year = date.getFullYear();
+                    %><%= day %>-<%= month %>-<%= year %></span> <!-- Date the book was read -->
+              </div>
+              <p class="lead"><%= choosenItem.review %></p> <!-- Review of the book -->
+          </div>
+      </div>
+  </div>
+</section> <!-- End of back to list section -->
+
+<%- include('partials/footer.ejs'); -%> <!-- Include footer partial -->
